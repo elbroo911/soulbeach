@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Almar | Arroz, Brisa y Fuego</title>
+    
+    <!-- React y ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    
+    <!-- Babel para JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fuentes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Configuración de Fuentes y Colores Personalizados */
+        :root {
+            --color-arena: #F5F2E9;
+            --color-petroleo: #003B49;
+            --color-terracota: #9C5436;
+            --color-oliva: #6B705C;
+        }
+
+        body {
+            background-color: var(--color-arena);
+            color: #2D3748;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1, h2, h3, h4, .font-brand {
+            font-family: 'Cinzel Decorative', serif;
+        }
+
+        /* Animaciones suaves */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn-primary {
+            background-color: var(--color-petroleo);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: var(--color-terracota);
+            transform: translateY(-2px);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--color-terracota);
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Estilo para las imágenes simuladas */
+        .img-placeholder {
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-family: 'Cinzel Decorative', serif;
+            overflow: hidden;
+        }
+        .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .img-placeholder:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { Menu, X, ChefHat, Fish, Flame, MapPin, Phone, Instagram, Facebook, Calendar, Utensils, Waves } = lucide;
+
+        // --- Componentes de Página ---
+
+        const Hero = ({ setPage }) => (
+            <div className="relative h-screen flex items-center justify-center overflow-hidden fade-in">
+                {/* Fondo simulado con superposición */}
+                <div className="absolute inset-0 bg-gray-900">
+                    <img 
+                        src="https://images.unsplash.com/photo-1534080564583-6be75777b70a?q=80&w=2070&auto=format&fit=crop" 
+                        alt="Costa Valenciana" 
+                        className="w-full h-full object-cover opacity-60"
+                    />
+                </div>
+                
+                <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+                    <div className="flex justify-center mb-6 text-[#F5F2E9]">
+                        <Waves size={64} strokeWidth={1} />
+                    </div>
+                    <h1 className="text-5xl md:text-7xl font-bold text-[#F5F2E9] mb-4 tracking-wider drop-shadow-lg">
+                        L'ALMAR
+                    </h1>
+                    <p className="text-xl md:text-2xl text-gray-200 mb-10 font-light tracking-widest uppercase">
+                        Arroz · Brisa · Fuego
+                    </p>
+                    <button 
+                        onClick={() => setPage('reservas')}
+                        className="bg-[#9C5436] text-[#F5F2E9] px-8 py-4 text-lg uppercase tracking-widest hover:bg-[#F5F2E9] hover:text-[#9C5436] transition-all duration-300 border border-transparent hover:border-[#9C5436]"
+                    >
+                        Reservar Mesa
+                    </button>
+                </div>
+            </div>
+        );
+
+        const AboutPreview = () => (
+            <section className="py-20 px-6 md:px-20 bg-[#F5F2E9] text-[#003B49]">
+                <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-6 fade-in">
+                        <h2 className="text-4xl font-brand text-[#9C5436]">Nuestra Esencia</h2>
+                        <p className="text-lg leading-relaxed font-light">
+                            L'Almar nace donde la huerta besa al mar. Somos defensores del <strong>Kilómetro Cero</strong> y la cocina honesta.
+                        </p>
+                        <p className="text-lg leading-relaxed font-light">
+                            No hay secretos, solo producto: gamba de Dénia, arroz de la Albufera y verduras cultivadas por nuestros vecinos. Todo cocinado al fuego vivo de leña de naranjo, que aporta ese aroma inconfundible de nuestra tierra.
+                        </p>
+                        <div className="flex space-x-8 pt-4">
+                            <div className="text-center">
+                                <Flame className="mx-auto text-[#9C5436] mb-2" />
+                                <span className="text-sm uppercase tracking-widest">Leña de Naranjo</span>
+                            </div>
+                            <div className="text-center">
+                                <Fish className="mx-auto text-[#9C5436] mb-2" />
+                                <span className="text-sm uppercase tracking-widest">Lonja Diaria</span>
+                            </div>
+                            <div className="text-center">
+                                <ChefHat className="mx-auto text-[#9C5436] mb-2" />
+                                <span className="text-sm uppercase tracking-widest">Tradición</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="h-96 rounded-lg overflow-hidden shadow-xl fade-in">
+                        <img 
+                            src="https://images.unsplash.com/photo-1594910086386-8a58a67c4a06?q=80&w=2070&auto=format&fit=crop" 
+                            alt="Paella al fuego" 
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                </div>
+            </section>
+        );
+
+        const MenuPage = () => {
+            const categories = [
+                {
+                    title: "La Picaeta",
+                    description: "Entrantes para compartir y abrir el alma",
+                    items: [
+                        { name: "Clóchinas al Vapor Cítrico", desc: "Mejillón valenciano, hoja de limonero y flor de sal", price: "14€" },
+                        { name: "Esgarraet 2.0", desc: "Pimiento a la leña, bacalao inglés, mojama y AOVE milenario", price: "16€" },
+                        { name: "Sepia 'Bruta'", desc: "Sepia de playa a la plancha con su melsa y alioli negro", price: "18€" },
+                        { name: "Tomate del Perelló", desc: "Con ventresca casera de atún y sal en escamas", price: "12€" }
+                    ]
+                },
+                {
+                    title: "Arroces a la Leña",
+                    description: "Mínimo 2 personas. Precio por ración. Hechos al sarmiento y naranjo.",
+                    items: [
+                        { name: "Paella Valenciana", desc: "La canónica: Pollo, conejo, garrofó, ferraura y caracoles", price: "18€" },
+                        { name: "Arroz del Senyoret L'Almar", desc: "Gamba roja de Dénia, rape y calamar. Todo pelado", price: "24€" },
+                        { name: "Meloso de Pato", desc: "Con boletus y foie. Intenso y cremoso", price: "22€" },
+                        { name: "Fideuà de Gandía", desc: "Fideo fino tostado, cigalas y fondo de roca", price: "20€" }
+                    ]
+                },
+                {
+                    title: "Dulce Final",
+                    description: "Postres caseros con el toque de la terreta",
+                    items: [
+                        { name: "Torrija de Horchata", desc: "Brioche empapado en chufa fresca y helado de canela", price: "8€" },
+                        { name: "Naranja en Texturas", desc: "Sorbete, sanguina fresca y piel confitada", price: "7€" },
+                        { name: "Coca de Llanda", desc: "Con chocolate caliente a la taza", price: "6€" }
+                    ]
+                }
+            ];
+
+            return (
+                <div className="pt-24 pb-20 px-4 md:px-20 bg-[#F5F2E9] min-h-screen fade-in">
+                    <div className="max-w-4xl mx-auto text-center mb-16">
+                        <Utensils className="mx-auto text-[#9C5436] mb-4" size={32} />
+                        <h2 className="text-4xl md:text-5xl font-brand text-[#003B49] mb-4">Nuestra Carta</h2>
+                        <p className="text-gray-600 italic">Producto de temporada. Si no es fresco, no lo servimos.</p>
+                    </div>
+
+                    <div className="max-w-5xl mx-auto space-y-16">
+                        {categories.map((cat, idx) => (
+                            <div key={idx} className="bg-white p-8 md:p-12 shadow-sm rounded-sm border-t-4 border-[#9C5436]">
+                                <h3 className="text-3xl font-brand text-[#003B49] mb-2">{cat.title}</h3>
+                                <p className="text-[#6B705C] mb-8 font-light">{cat.description}</p>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                                    {cat.items.map((item, itemIdx) => (
+                                        <div key={itemIdx} className="flex justify-between items-baseline border-b border-gray-100 pb-2">
+                                            <div className="pr-4">
+                                                <h4 className="text-xl font-medium text-gray-800">{item.name}</h4>
+                                                <p className="text-sm text-gray-500 mt-1">{item.desc}</p>
+                                            </div>
+                                            <span className="text-lg font-brand text-[#9C5436]">{item.price}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        const GalleryPage = () => {
+            const images = [
+                { url: "https://images.unsplash.com/photo-1515443961218-a51367888e4b?q=80&w=2070&auto=format&fit=crop", title: "Nuestros Arroces" },
+                { url: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop", title: "Vistas al Mar" },
+                { url: "https://images.unsplash.com/photo-1550966871-3ed3c47e2ce2?q=80&w=2070&auto=format&fit=crop", title: "Detalles" },
+                { url: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop", title: "Ingredientes Frescos" },
+                { url: "https://images.unsplash.com/photo-1516684732162-798a0062be99?q=80&w=2592&auto=format&fit=crop", title: "Clóchinas" },
+                { url: "https://images.unsplash.com/photo-1543353071-873f17a7a088?q=80&w=2070&auto=format&fit=crop", title: "Espacio L'Almar" }
+            ];
+
+            return (
+                <div className="pt-24 pb-20 px-4 md:px-10 bg-[#F5F2E9] min-h-screen fade-in">
+                    <div className="text-center mb-12">
+                        <h2 className="text-4xl font-brand text-[#003B49]">Galería</h2>
+                        <p className="text-[#6B705C] mt-2">Un vistazo a nuestra alma</p>
+                    </div>
+                    <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {images.map((img, idx) => (
+                            <div key={idx} className="group relative h-80 overflow-hidden cursor-pointer shadow-lg">
+                                <img src={img.url} alt={img.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <div className="absolute inset-0 bg-[#003B49] bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                                    <span className="text-white font-brand text-2xl opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                        {img.title}
+                                    </span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        const ReservationPage = () => {
+            const [formStatus, setFormStatus] = useState('idle'); // idle, sending, success
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                setFormStatus('sending');
+                setTimeout(() => {
+                    setFormStatus('success');
+                }, 1500);
+            };
+
+            if (formStatus === 'success') {
+                return (
+                    <div className="pt-24 min-h-screen bg-[#F5F2E9] flex items-center justify-center px-4 fade-in">
+                        <div className="bg-white p-10 rounded shadow-xl text-center max-w-lg border-t-4 border-[#9C5436]">
+                            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <Calendar className="text-green-600" size={32} />
+                            </div>
+                            <h2 className="text-3xl font-brand text-[#003B49] mb-4">¡Reserva Solicitada!</h2>
+                            <p className="text-gray-600 mb-6">Hemos recibido tu solicitud. Te enviaremos un correo de confirmación en breve. ¡Nos vemos en L'Almar!</p>
+                            <button 
+                                onClick={() => setFormStatus('idle')}
+                                className="text-[#9C5436] font-semibold hover:underline"
+                            >
+                                Volver al formulario
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+
+            return (
+                <div className="pt-24 pb-20 px-4 bg-[#F5F2E9] min-h-screen flex items-center justify-center fade-in">
+                    <div className="w-full max-w-5xl bg-white shadow-2xl rounded-lg overflow-hidden flex flex-col md:flex-row">
+                        <div className="md:w-1/2 bg-[#003B49] p-10 text-white flex flex-col justify-center relative overflow-hidden">
+                            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                                <Waves size={400} />
+                            </div>
+                            <h2 className="text-4xl font-brand mb-6 z-10">Reserva tu Mesa</h2>
+                            <p className="mb-8 font-light z-10 text-gray-300">Ven a disfrutar de la brisa y el mejor arroz. Para grupos mayores de 10 personas, por favor llámanos directamente.</p>
+                            <div className="space-y-4 z-10">
+                                <div className="flex items-center space-x-4">
+                                    <Phone className="text-[#9C5436]" />
+                                    <span>+34 965 00 00 00</span>
+                                </div>
+                                <div className="flex items-center space-x-4">
+                                    <MapPin className="text-[#9C5436]" />
+                                    <span>Carrer de la Mar, 24, Costa Valenciana</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="md:w-1/2 p-10">
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2 font-brand">Nombre Completo</label>
+                                    <input required type="text" className="w-full border-b-2 border-gray-200 focus:border-[#9C5436] outline-none py-2 transition-colors bg-transparent" placeholder="Joan Martorell" />
+                                </div>
+                                <div className="grid grid-cols-2 gap-6">
+                                    <div>
+                                        <label className="block text-sm font-bold text-gray-700 mb-2 font-brand">Fecha</label>
+                                        <input required type="date" className="w-full border-b-2 border-gray-200 focus:border-[#9C5436] outline-none py-2 bg-transparent" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-bold text-gray-700 mb-2 font-brand">Hora</label>
+                                        <select className="w-full border-b-2 border-gray-200 focus:border-[#9C5436] outline-none py-2 bg-transparent">
+                                            <option>13:30</option>
+                                            <option>14:00</option>
+                                            <option>14:30</option>
+                                            <option>15:00</option>
+                                            <option>20:30</option>
+                                            <option>21:00</option>
+                                            <option>21:30</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2 font-brand">Comensales</label>
+                                    <input required type="number" min="1" max="10" className="w-full border-b-2 border-gray-200 focus:border-[#9C5436] outline-none py-2 bg-transparent" placeholder="2" />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2 font-brand">Teléfono</label>
+                                    <input required type="tel" className="w-full border-b-2 border-gray-200 focus:border-[#9C5436] outline-none py-2 bg-transparent" placeholder="+34 600 000 000" />
+                                </div>
+                                <button type="submit" className="w-full bg-[#003B49] text-white py-4 font-bold tracking-widest hover:bg-[#9C5436] transition-colors mt-4">
+                                    CONFIRMAR RESERVA
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const Footer = () => (
+            <footer className="bg-[#003B49] text-[#F5F2E9] pt-16 pb-8 px-6">
+                <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-gray-700 pb-12">
+                    <div className="text-center md:text-left">
+                        <h3 className="text-2xl font-brand mb-4">L'ALMAR</h3>
+                        <p className="font-light text-gray-400">Arroz, Brisa y Fuego.</p>
+                        <p className="font-light text-gray-400 mt-2">La esencia del Mediterráneo en tu mesa.</p>
+                    </div>
+                    <div className="text-center">
+                        <h4 className="font-bold uppercase tracking-widest mb-6 text-[#9C5436]">Horario</h4>
+                        <p className="mb-2">Lunes - Domingo</p>
+                        <p className="text-gray-400">13:00 - 16:30</p>
+                        <p className="text-gray-400">20:00 - 23:30</p>
+                    </div>
+                    <div className="text-center md:text-right">
+                        <h4 className="font-bold uppercase tracking-widest mb-6 text-[#9C5436]">Contacto</h4>
+                        <p className="mb-2">Carrer de la Mar, 24</p>
+                        <p className="mb-4">Costa Valenciana</p>
+                        <div className="flex justify-center md:justify-end space-x-4">
+                            <Instagram className="cursor-pointer hover:text-[#9C5436] transition-colors" />
+                            <Facebook className="cursor-pointer hover:text-[#9C5436] transition-colors" />
+                        </div>
+                    </div>
+                </div>
+                <div className="text-center mt-8 text-sm text-gray-500 font-light">
+                    &copy; 2024 Restaurante L'Almar. Todos los derechos reservados.
+                </div>
+            </footer>
+        );
+
+        // --- Aplicación Principal ---
+
+        const App = () => {
+            const [page, setPage] = useState('home');
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [scrolled, setScrolled] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    setScrolled(window.scrollY > 50);
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const navigate = (target) => {
+                setPage(target);
+                setIsMenuOpen(false);
+                window.scrollTo(0, 0);
+            };
+
+            return (
+                <div className="flex flex-col min-h-screen">
+                    {/* Header de Navegación */}
+                    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled || page !== 'home' ? 'bg-[#F5F2E9] shadow-md py-3' : 'bg-transparent py-6'}`}>
+                        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+                            
+                            {/* Logo */}
+                            <div 
+                                className={`text-2xl font-bold font-brand cursor-pointer flex items-center gap-2 ${scrolled || page !== 'home' ? 'text-[#003B49]' : 'text-[#F5F2E9]'}`}
+                                onClick={() => navigate('home')}
+                            >
+                                <div className={`p-1 border-2 rounded-full ${scrolled || page !== 'home' ? 'border-[#003B49]' : 'border-[#F5F2E9]'}`}>
+                                    <div className={`w-3 h-3 rounded-full ${scrolled || page !== 'home' ? 'bg-[#9C5436]' : 'bg-[#F5F2E9]'}`}></div>
+                                </div>
+                                L'ALMAR
+                            </div>
+
+                            {/* Menu Desktop */}
+                            <div className={`hidden md:flex space-x-8 font-medium text-sm tracking-widest uppercase ${scrolled || page !== 'home' ? 'text-[#003B49]' : 'text-[#F5F2E9]'}`}>
+                                <button onClick={() => navigate('home')} className="hover:text-[#9C5436] transition-colors nav-link">Inicio</button>
+                                <button onClick={() => navigate('carta')} className="hover:text-[#9C5436] transition-colors nav-link">Carta</button>
+                                <button onClick={() => navigate('galeria')} className="hover:text-[#9C5436] transition-colors nav-link">Galería</button>
+                                <button onClick={() => navigate('reservas')} className={`px-4 py-2 border rounded transition-all ${scrolled || page !== 'home' ? 'border-[#003B49] hover:bg-[#003B49] hover:text-white' : 'border-white hover:bg-white hover:text-[#003B49]'}`}>
+                                    Reservar
+                                </button>
+                            </div>
+
+                            {/* Botón Mobile */}
+                            <div className="md:hidden">
+                                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={scrolled || page !== 'home' ? 'text-[#003B49]' : 'text-[#F5F2E9]'}>
+                                    {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Menú Mobile Desplegable */}
+                        {isMenuOpen && (
+                            <div className="absolute top-full left-0 w-full bg-[#F5F2E9] text-[#003B49] shadow-lg flex flex-col p-6 space-y-4 md:hidden border-t border-gray-200">
+                                <button onClick={() => navigate('home')} className="text-left font-brand text-xl py-2 border-b border-gray-200">Inicio</button>
+                                <button onClick={() => navigate('carta')} className="text-left font-brand text-xl py-2 border-b border-gray-200">Carta</button>
+                                <button onClick={() => navigate('galeria')} className="text-left font-brand text-xl py-2 border-b border-gray-200">Galería</button>
+                                <button onClick={() => navigate('reservas')} className="text-left font-brand text-xl py-2 text-[#9C5436]">Reservar Mesa</button>
+                            </div>
+                        )}
+                    </nav>
+
+                    {/* Contenido Principal */}
+                    <main className="flex-grow">
+                        {page === 'home' && (
+                            <>
+                                <Hero setPage={setPage} />
+                                <AboutPreview />
+                            </>
+                        )}
+                        {page === 'carta' && <MenuPage />}
+                        {page === 'galeria' && <GalleryPage />}
+                        {page === 'reservas' && <ReservationPage />}
+                    </main>
+
+                    <Footer />
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
+
