@@ -55,43 +55,68 @@
     </nav>
 
     <!-- Header Page -->
-    <header class="pt-32 pb-12 bg-soul-dark text-white text-center relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style="background-image: radial-gradient(#4A8C9C 1px, transparent 1px); background-size: 20px 20px;"></div>
-        <h1 class="font-serif text-4xl font-bold relative z-10">Más que un Hotel</h1>
-        <p class="mt-4 text-gray-300 max-w-2xl mx-auto relative z-10">Actividades, relajación y gastronomía mediterránea.</p>
+    <header class="pt-32 pb-16 bg-soul-sand text-center relative overflow-hidden">
+        <h1 class="font-serif text-5xl font-bold relative z-10 text-soul-dark">Más que un Hotel</h1>
+        <p class="mt-4 text-gray-600 max-w-2xl mx-auto relative z-10 text-lg">Una colección de momentos diseñados para conectar con Dénia.</p>
     </header>
 
-    <section class="py-20 bg-white flex-grow">
+    <section class="py-12 bg-white flex-grow">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 flex gap-6">
-                    <div class="text-soul-blue text-4xl"><i class="fas fa-water"></i></div>
-                    <div>
-                        <h3 class="font-bold text-xl mb-2 text-soul-dark">Deportes Acuáticos</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Aprovecha nuestra ubicación a pie de playa. Disponemos de alquiler de tablas de Paddle Surf y Kayaks para que explores la costa a tu ritmo.</p>
+            <!-- Grid de Experiencias tipo Revista -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Card 1: Agua -->
+                <div class="relative h-[400px] rounded-2xl overflow-hidden shadow-xl group">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Deportes Acuáticos" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white">
+                        <div class="bg-soul-blue w-12 h-12 flex items-center justify-center rounded-full mb-4">
+                            <i class="fas fa-water text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-3xl font-bold mb-2">Deportes Acuáticos</h3>
+                        <p class="text-gray-200 text-sm leading-relaxed max-w-md">Disponemos de alquiler de tablas de Paddle Surf y Kayaks. Sal directamente desde la playa a 20 metros de tu habitación.</p>
                     </div>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 flex gap-6">
-                    <div class="text-soul-blue text-4xl"><i class="fas fa-bicycle"></i></div>
-                    <div>
-                        <h3 class="font-bold text-xl mb-2 text-soul-dark">Rutas en Bicicleta</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Dénia es un paraíso ciclista. Alquila una de nuestras bicicletas y recorre el paseo marítimo o adéntrate en las rutas del Montgó.</p>
+
+                <!-- Card 2: Bici -->
+                <div class="relative h-[400px] rounded-2xl overflow-hidden shadow-xl group">
+                    <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Ciclismo" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white">
+                         <div class="bg-soul-wood w-12 h-12 flex items-center justify-center rounded-full mb-4">
+                            <i class="fas fa-bicycle text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-3xl font-bold mb-2">Rutas Ciclistas</h3>
+                        <p class="text-gray-200 text-sm leading-relaxed max-w-md">Explora el paseo marítimo o las faldas del Montgó. Alquila bicicletas en recepción y pide nuestros mapas de rutas.</p>
                     </div>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 flex gap-6">
-                    <div class="text-soul-blue text-4xl"><i class="fas fa-swimming-pool"></i></div>
-                    <div>
-                        <h3 class="font-bold text-xl mb-2 text-soul-dark">Piscina & Chill Out</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Nuestra terraza está diseñada para el descanso absoluto. Disfruta de un cóctel al atardecer en nuestra zona chill-out.</p>
+
+                <!-- Card 3: Relax -->
+                <div class="relative h-[400px] rounded-2xl overflow-hidden shadow-xl group">
+                    <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Relax Piscina" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white">
+                         <div class="bg-soul-blue/80 w-12 h-12 flex items-center justify-center rounded-full mb-4">
+                            <i class="fas fa-swimming-pool text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-3xl font-bold mb-2">Piscina & Chill Out</h3>
+                        <p class="text-gray-200 text-sm leading-relaxed max-w-md">Un oasis de calma. Disfruta de nuestra zona de solárium y tómate un respiro al atardecer.</p>
                     </div>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 flex gap-6">
-                    <div class="text-soul-blue text-4xl"><i class="fas fa-utensils"></i></div>
-                    <div>
-                        <h3 class="font-bold text-xl mb-2 text-soul-dark">Gastronomía Local</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">Comienza el día con desayunos frescos y mediterráneos. Te asesoramos sobre los mejores restaurantes de Dénia (Ciudad Creativa de la Gastronomía por la UNESCO).</p>
+
+                <!-- Card 4: Gastronomía -->
+                <div class="relative h-[400px] rounded-2xl overflow-hidden shadow-xl group">
+                    <img src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Gastronomía" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white">
+                         <div class="bg-orange-500 w-12 h-12 flex items-center justify-center rounded-full mb-4">
+                            <i class="fas fa-utensils text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-3xl font-bold mb-2">Gastronomía Local</h3>
+                        <p class="text-gray-200 text-sm leading-relaxed max-w-md">Desayunos mediterráneos frescos. Además, te guiamos por Dénia, Ciudad Creativa de la Gastronomía (UNESCO).</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
