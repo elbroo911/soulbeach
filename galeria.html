@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería | Soul Beach Hotel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'soul-sand': '#F5F0EB', 'soul-blue': '#4A8C9C', 'soul-dark': '#1F2937' },
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-600 antialiased bg-white flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="font-serif text-2xl font-bold text-soul-dark tracking-wider">
+                        SOUL BEACH <span class="text-soul-blue text-lg block font-sans font-light -mt-1 tracking-widest">HOTEL</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-gray-600 hover:text-soul-blue transition-colors text-sm uppercase tracking-wide">Inicio</a>
+                    <a href="habitaciones.html" class="text-gray-600 hover:text-soul-blue transition-colors text-sm uppercase tracking-wide">Habitaciones</a>
+                    <a href="galeria.html" class="text-soul-blue font-bold transition-colors text-sm uppercase tracking-wide">Galería</a>
+                    <a href="experiencia.html" class="text-gray-600 hover:text-soul-blue transition-colors text-sm uppercase tracking-wide">Experiencia</a>
+                    <button onclick="openBooking()" class="bg-soul-blue text-white px-6 py-2 rounded-full hover:bg-cyan-700 transition duration-300 text-sm font-medium uppercase tracking-wide shadow-lg flex items-center gap-2">
+                        <i class="fas fa-phone-alt text-xs"></i> Reservar
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-soul-blue focus:outline-none"><i class="fas fa-bars text-2xl"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-soul-blue">Inicio</a>
+                <a href="habitaciones.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-soul-blue">Habitaciones</a>
+                <a href="galeria.html" class="block px-3 py-2 text-base font-medium text-soul-blue">Galería</a>
+                <a href="experiencia.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-soul-blue">Experiencia</a>
+                <button onclick="openBooking()" class="block w-full text-center mt-4 px-5 py-3 bg-soul-blue text-white font-medium rounded-lg">Reservar / Contactar</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Page -->
+    <header class="pt-32 pb-12 bg-soul-sand/30 text-center">
+        <h1 class="font-serif text-4xl font-bold text-soul-dark">Galería de Momentos</h1>
+        <p class="mt-4 text-gray-500 max-w-2xl mx-auto">Detalles que enamoran a solo 20 metros del mar.</p>
+    </header>
+
+    <section class="py-12 bg-white flex-grow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                <div class="break-inside-avoid rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500">
+                    <img src="doble.jpeg" alt="Detalle Habitación" class="w-full h-auto">
+                </div>
+                <div class="break-inside-avoid rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Detalle Relax" class="w-full h-auto">
+                </div>
+                <div class="break-inside-avoid rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500">
+                     <img src="duplex.jpeg" alt="Cocina Duplex" class="w-full h-auto">
+                </div>
+                <div class="break-inside-avoid rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500">
+                    <img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Detalles Diseño" class="w-full h-auto">
+                </div>
+                <div class="break-inside-avoid rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500">
+                     <img src="individual.jpeg" alt="Habitación Individual" class="w-full h-auto">
+                </div>
+                <div class="break-inside-avoid rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500">
+                    <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Piscina" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-soul-dark text-white pt-16 pb-8 border-t border-gray-700 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400 text-sm">
+            <p>&copy; 2025 Soul Beach Hotel. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-black/60 z-[60] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-xl shadow-2xl max-w-sm w-full p-8 relative text-center">
+            <button onclick="closeBooking()" class="absolute top-4 right-4 text-gray-400 hover:text-soul-dark p-2"><i class="fas fa-times text-xl"></i></button>
+            <div class="w-16 h-16 bg-soul-blue/10 rounded-full flex items-center justify-center mx-auto mb-6"><i class="fas fa-phone-alt text-3xl text-soul-blue"></i></div>
+            <h3 class="font-serif text-2xl font-bold text-soul-dark mb-3">Reservas e Información</h3>
+            <p class="text-gray-500 mb-8 leading-relaxed">Gestionamos todas nuestras reservas directamente por teléfono.</p>
+            <a href="tel:+34966889290" class="block w-full bg-soul-blue text-white font-bold py-4 rounded-xl hover:bg-cyan-700 transition duration-300 shadow-lg mb-4 text-xl tracking-wide">966 889 290</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
+        function openBooking() { document.getElementById('bookingModal').classList.remove('hidden'); }
+        function closeBooking() { document.getElementById('bookingModal').classList.add('hidden'); }
+        document.getElementById('bookingModal').addEventListener('click', function(e) { if (e.target === this) closeBooking(); });
+    </script>
+</body>
+</html>
